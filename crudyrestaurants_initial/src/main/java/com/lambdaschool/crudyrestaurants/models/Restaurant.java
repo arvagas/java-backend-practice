@@ -1,5 +1,10 @@
 package com.lambdaschool.crudyrestaurants.models;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 /**
@@ -48,6 +53,17 @@ public class Restaurant
      * This was added to specifically show how to update fields that do not have a NULL value.
      */
     private int seatcapacity;
+
+    @OneToMany(mappedBy = "restaurant",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true)
+    private List<Menu> menus = new ArrayList<>();
+
+    @ManyToMany()
+    @JoinTable(name = "restaurantpayments",
+    joinColumns = @JoinColumn(name = "restaurantid"),
+    inverseJoinColumns = @JoinColumn(name = "paymentid"))
+    private Set<Payment> payments = new HashSet<>();
 
     /**
      * Default constructor used primarily by the JPA.
