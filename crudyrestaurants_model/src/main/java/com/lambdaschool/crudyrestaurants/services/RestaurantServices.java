@@ -1,6 +1,9 @@
 package com.lambdaschool.crudyrestaurants.services;
 
+import java.util.List;
+
 import com.lambdaschool.crudyrestaurants.models.Restaurant;
+import com.lambdaschool.crudyrestaurants.views.MenuCounts;
 
 /**
  * The Service that works with the Restaurant Model.
@@ -16,4 +19,16 @@ public interface RestaurantServices
      * @return the saved restaurant object including any automatically generated fields
      */
     Restaurant save(Restaurant restaurant);
+
+    List<Restaurant> findAllRestaurants();
+
+    Restaurant findRestaurantById(long restid);
+
+    Restaurant findRestaurantByName(String name);
+
+    List<Restaurant> findRestaurantByNameLike(String subname);
+
+    List<MenuCounts> getMenuCounts();
+
+    List<Restaurant> findRestaurantByLikeDish(String subdish);
 }

@@ -2,6 +2,8 @@ package com.lambdaschool.crudyrestaurants.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * The entity allowing interaction with the menus table.
  */
@@ -35,6 +37,7 @@ public class Menu
     @ManyToOne
     @JoinColumn(name = "restaurantid",
         nullable = false)
+    @JsonIgnoreProperties(value = "menus", allowSetters = true)
     private Restaurant restaurant;
 
     /**

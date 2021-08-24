@@ -1,6 +1,9 @@
 package com.lambdaschool.crudyrestaurants.models;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -61,6 +64,7 @@ public class Restaurant
     @JoinTable(name = "restaurantpayments",
         joinColumns = @JoinColumn(name = "restaurantid"),
         inverseJoinColumns = @JoinColumn(name = "paymentid"))
+    @JsonIgnoreProperties(value = "restaurants", allowSetters = true)
     Set<Payment> payments = new HashSet<>();
 
     /**
@@ -70,6 +74,7 @@ public class Restaurant
     @OneToMany(mappedBy = "restaurant",
         cascade = CascadeType.ALL,
         orphanRemoval = true)
+    @JsonIgnoreProperties(value = "restaurant", allowSetters = true)
     private List<Menu> menus = new ArrayList<>();
 
     /**
