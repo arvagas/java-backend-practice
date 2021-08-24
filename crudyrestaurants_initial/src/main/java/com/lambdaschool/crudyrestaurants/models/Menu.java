@@ -2,9 +2,11 @@ package com.lambdaschool.crudyrestaurants.models;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "menus")
 public class Menu {
   @Id
-  @GeneratedValue(Strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private long menuid;
 
   @Column(nullable = false)
