@@ -73,4 +73,10 @@ public interface RestaurantServices
      * @return the saved restaurant object including any automatically generated fields
      */
     Restaurant save(Restaurant restaurant);
+
+    Restaurant update(long id, Restaurant restaurant);
+
+    void delete(long id);
+
+    void deleteAll();
 }
